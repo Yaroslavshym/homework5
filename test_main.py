@@ -2,6 +2,7 @@ import main
 import sys
 import datetime
 
+
 def test_check_if_correct_type():
     argument_v1 = '65+40/2'
     argument_v2 = 9012345678998765
@@ -75,12 +76,13 @@ def test_check_if_isevaluable():
 def test_show_time(capsys):
     main.show_time('2')
     out, err = capsys.readouterr()
-    correct_output = (f'{datetime.datetime.now().time().hour}:'
-                      f'{datetime.datetime.now().time().minute}\n'
-                      f'{datetime.datetime.now().time().hour}:'
-                      f'{datetime.datetime.now().time().minute}\n')
-
-
+    minutes_now = datetime.datetime.now().time().minute
+    hours_now = datetime.datetime.now().time().hour
+    correct_output = (f'Your local time is: '
+                      f'{hours_now}:'
+                      f'{minutes_now}\n'
+                      f'Your local time is: '
+                      f'{hours_now}:'
+                      f'{minutes_now}\n')
     condition1 = correct_output == out
     assert condition1
-# '22:51\n22:51\n
