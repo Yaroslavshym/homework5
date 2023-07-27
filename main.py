@@ -11,7 +11,7 @@ def check_if_type_is_int_or_str(argument: any) -> bool:
     return False
 
 
-def check_if_isevaluable(argument: int | str) -> bool:
+def check_if_isevaluable(argument: any) -> bool:
     try:
         eval(str(argument))
         return True
@@ -19,7 +19,7 @@ def check_if_isevaluable(argument: int | str) -> bool:
         return False
 
 
-def convert_argument_to_int(argument: int | str) -> int:
+def convert_argument_to_int(argument: any) -> int:
     if check_if_type_is_int_or_str(argument):
         if check_if_isevaluable(argument):
             correct_number = int(eval(str(argument)))
@@ -27,7 +27,7 @@ def convert_argument_to_int(argument: int | str) -> int:
     return False
 
 
-def check_if_positive_number(number: int | str) -> bool:
+def check_if_positive_number(number: any) -> bool:
     if convert_argument_to_int(number):
         number = convert_argument_to_int(number)
         if not number < 0:
@@ -52,7 +52,7 @@ def get_number() -> int:
         raise TypeError('Incorrect number of arguments')
 
 
-def check_if_number_less_0(number: int | str) -> bool:
+def check_if_number_less_0(number: any) -> bool:
     number = convert_argument_to_int(number)
     if number > 0:
         return True
@@ -74,7 +74,7 @@ def print_error(exception_type, value, traceback):
         time.sleep(random.random()/20)
 
 
-def show_time(number_of_seconds: int | str) -> print:
+def show_time(number_of_seconds: any) -> print:
     if check_if_number_less_0(number_of_seconds):
         if convert_argument_to_int(number_of_seconds):
             number_of_seconds = convert_argument_to_int(number_of_seconds)
