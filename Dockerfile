@@ -1,6 +1,6 @@
-FROM python:alpine3.10
+FROM python:3.10.3-slim
 WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
-CMD ["python", "run_main.py"]
-CMD ["pytest", "test_main.py"]
+CMD ["python", "main.py", "3"]
+ 

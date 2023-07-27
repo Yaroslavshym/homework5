@@ -1,7 +1,5 @@
 import sys
 import datetime
-import random
-import time
 
 
 def check_if_type_is_int_or_str(argument: any) -> bool:
@@ -46,8 +44,8 @@ def get_number() -> int:
     if check_number_of_arguments():
         argument = sys.argv[-1]
         int_number = convert_argument_to_int(argument)
-        if check_if_positive_number(int_number):
-            return int_number
+
+        return int_number
     else:
         raise TypeError('Incorrect number of arguments')
 
@@ -57,21 +55,6 @@ def check_if_number_less_0(number: any) -> bool:
     if number > 0:
         return True
     return False
-
-
-def print_error(exception_type, value, traceback):
-    text = ('While running this program appeared one of this problems:\n'
-            '1. Program needs value more than 0 to run\n'
-            '2. Or you used some special character that is not allowed\n'
-            '      (Characters that are allowed: "+ - * / % **")\n'
-            '3. Or you may used some text characters (some words)\n'
-            '4. Also may not recognized that this program uses only last argument\n'
-            '   You should try to run this program again\n'
-            '   We believe that this program with your argument will work!\n')
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(random.random()/20)
 
 
 def show_time(number_of_seconds: any) -> print:
@@ -87,4 +70,5 @@ def show_time(number_of_seconds: any) -> print:
         raise ValueError
 
 
-sys.excepthook = print_error
+number_of_seconds = get_number()
+show_time(number_of_seconds)
